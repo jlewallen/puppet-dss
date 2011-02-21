@@ -1,6 +1,11 @@
 class jenkins {
+  exec { "install-jenkins-key":
+    command => "/usr/bin/wget -q -O - http://pkg.jenkins-ci.org/debian/jenkins-ci.org.key | apt-key add - && apt-get update"
+  }
+
   package { 'jenkins':
-    ensure => installed
+    ensure => installed,
+    require => Exec["install-jenkins-key"]
   }
 
   service { 'jenkins':
