@@ -7,6 +7,8 @@ node /^server1/ {
   include jenkins
   include nexus
   include gerrit
+  include submin
+  # include gitorious
 
   nginx::config { main:
     name => 'page5of4.dyndns.org'
