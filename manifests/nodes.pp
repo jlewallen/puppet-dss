@@ -8,7 +8,12 @@ node /^server1/ {
   include nexus
   include gerrit
   include submin
-  # include gitorious
+  include augeas
+  include mysql::server
+
+  mysql::database { "gerrit":
+    ensure => present,
+  }
 
   nginx::config { main:
     name => 'page5of4.dyndns.org'

@@ -2,13 +2,20 @@ class common {
   package { "zsh":
     ensure => installed
   }
+
   package { "screen":
     ensure => installed
   }
+
   package { "vim":
     ensure => installed
   }
+
   package { "htop":
+    ensure => installed
+  }
+
+  package { "pwgen":
     ensure => installed
   }
 
@@ -19,7 +26,7 @@ class common {
     content => template("common/sources.list.erb"),
   }
 
-  exec{"/usr/bin/apt-get update":
+  exec { "/usr/bin/apt-get update":
     refreshonly => true,
     subscribe => File["/etc/apt/sources.list"],
     require => File["/etc/apt/sources.list"],
