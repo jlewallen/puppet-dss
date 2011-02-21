@@ -22,12 +22,13 @@ class gerrit {
   exec { "initialize-gerrit":
     command => "/usr/bin/java -jar /data/gerrit-2.1.6.1.war init -d /home/gerrit/review_site",
     cwd => "/home/gerrit",
-    unless => "/usr/bin/test -d /home/gerrit/review_site"
+    unless => "/usr/bin/test -d /home/gerrit/review_site",
+    require => Package["openjdk-6-jre"]
   }
 
   file { "/etc/init.d/gerrit":
     ensure => link,
-    target => "/etc/init.d/gerrit.sh",
+    target => "/home/gerrit/review_site/bin/gerrit.sh",
     require => Exec['initialize-gerrit']
   }
 
