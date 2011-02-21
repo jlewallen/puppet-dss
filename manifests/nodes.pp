@@ -1,19 +1,5 @@
-node 'standard-node' {
-  package { "zsh":
-    ensure => installed
-  }
-  package { "screen":
-    ensure => installed
-  }
-  package { "vim":
-    ensure => installed
-  }
-  package { "htop":
-    ensure => installed
-  }
-}
-
-node /^server1/ inherits 'standard-node' {
+node /^server1/ {
+  include common
   include ebs_backed_data
   include git
   include nginx
