@@ -11,6 +11,10 @@ class nginx {
     gid => "nginx"
   }
 
+  file { "/etc/nginx/apps":
+    ensure => directory
+  }
+
   file { "/var/www/nginx-default":
     ensure => directory,
     recurse => true,
