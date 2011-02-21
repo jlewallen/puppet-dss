@@ -42,4 +42,10 @@ node "pfun" {
     data_path => '/data/gerrit',
     canonical_url => 'http://page5of4.dyndns.org/gerrit'
   }
+
+  file { "/var/www/nginx-default/index.html":
+    content => template("menu.html.erb"),
+    owner => 'nginx',
+    group => 'nginx'
+  }
 }
