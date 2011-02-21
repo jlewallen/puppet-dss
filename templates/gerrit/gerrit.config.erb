@@ -1,0 +1,19 @@
+[gerrit]
+	basePath = <%= data_path %>/git
+	canonicalWebUrl = <%= canonical_url %>
+[database]
+	type = H2
+	database = <%= data_path %>/db/ReviewDB
+[auth]
+	type = OPENID
+[sendemail]
+	smtpServer = 127.0.0.1
+[container]
+	user = root
+	javaHome = /usr/lib/jvm/java-6-openjdk/jre
+[sshd]
+	listenAddress = *:29418
+[httpd]
+	listenUrl = http://*:8082/gerrit
+[cache]
+	directory = cache
