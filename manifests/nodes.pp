@@ -1,7 +1,8 @@
-node /^server1/ {
+node "pfun" {
   include common
   include ebs_backed_data
   include git
+  include apache::disabled
   include nginx
   include java
   include jenkins
