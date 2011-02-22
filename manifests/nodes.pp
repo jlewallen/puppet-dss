@@ -1,13 +1,21 @@
-node "server1" {
+node default {
   include common
+  include resolvconf
   include git
+
+  resolv_conf { "example":
+    domainname  => "socal.rr.com",
+    searchpath  => [ 'socal.rr.com' ],
+    nameservers => [ '8.8.8.8', '192.168.0.1' ],
+  }
+}
+
+node "server1" inherits default {
   include lxc
 }
 
-node "pfun" {
-  include common
+node "pfun" inherits default {
   include ebs_backed_data
-  include git
   include apache::disabled
   include nginx
   include java

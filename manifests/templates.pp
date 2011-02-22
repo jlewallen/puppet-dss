@@ -1,6 +1,6 @@
-class baseclass {
-}
+# class baseclass {
+# }
 
-node default {
-    include baseclass
-}
+# node default {
+#   include baseclass
+# }
