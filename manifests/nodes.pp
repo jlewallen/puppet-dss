@@ -1,3 +1,9 @@
+node "server1" {
+  include common
+  include git
+  include lxc
+}
+
 node "pfun" {
   include common
   include ebs_backed_data
