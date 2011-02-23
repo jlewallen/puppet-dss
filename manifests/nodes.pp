@@ -12,6 +12,12 @@ node default {
 
 node "server1" inherits default {
   include lxc
+  include java
+  include glassfish
+
+  glassfish::domain { domain1:
+    instanceport => 7070
+  }
 }
 
 node "pfun" inherits default {

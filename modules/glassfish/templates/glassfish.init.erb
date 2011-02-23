@@ -1,0 +1,23 @@
+#! /bin/sh 
+
+GLASSFISHPATH=/usr/local/glassfish/bin 
+
+case "$1" in 
+start) 
+echo "Starting glassfish from $GLASSFISHPATH" 
+sudo -u glassfish $GLASSFISHPATH/asadmin start-domain domain1 
+;; 
+restart) 
+$0 stop 
+$0 start 
+;; 
+stop) 
+echo "Stopping glassfish from $GLASSFISHPATH" 
+sudo -u glassfish $GLASSFISHPATH/asadmin stop-domain domain1 
+;; 
+*) 
+echo $"usage: $0 {start|stop|restart}" 
+exit 3 
+;; 
+esac 
+: 
